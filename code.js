@@ -24,6 +24,9 @@ app.get("/",function(request,response){
 app.get("/sitemap",function(request,response){
 	response.sendFile(__dirname + "/public/sitemap.xml");
 });
+app.get("/robots.txt",function(request,response){
+	response.sendFile(__dirname + "/public/robots.txt");
+});
 app.post("/api/create-short-url",function(request,response){
 	let uniqueID = Math.random().toString(36).replace(/[^a-z0-9]/gi,'').substr(2,10);
 	let sql = `INSERT INTO links(longurl,shorturlid) VALUES('${request.body.longurl}','${uniqueID}')`;
